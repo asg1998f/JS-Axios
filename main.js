@@ -1,5 +1,6 @@
 //1.Obtener y mostrar usuarios utilizando la API de JSONPlaceholder
 // este ejercicio utilizaremos la API de https://jsonplaceholder.typicode.com/users. Leyendo su documentación, deberás hacer lo siguiente:
+
 //Imprimir por consola la lista (array) de usuarios.
 axios.get("https://jsonplaceholder.typicode.com/users")
 .then(response =>{
@@ -24,7 +25,7 @@ axios.get('https://jsonplaceholder.typicode.com/users')
     })
 users.forEach(user => {
     console.log(user.name);
-});
+})
 
 //Nota: Después de realizar el console.log de la variable "users", es normal que aparezca vacía debido a que JavaScript no es bloqueante y el console.log se ejecuta antes de que la variable sea llenada con la información de la solicitud.
 
@@ -37,3 +38,14 @@ showUsers()
 document.getElementById('mostrarusuarios').addEventListener('click', showUsers)
 //Ahora en vez de mostrar los usuarios por consola muestra el nombre de cada uno en el DOM (en el HTML).
 
+const divUser = document.querySelector("#listausurios")
+
+BigInt.addEventListener("click" , (e) => {
+    e.preventDefault()
+    axios.get(users)
+
+    .then((res)=>{
+        const mapName = res.date.map(value => value.name)
+        divUser.innerHTML = `<p>${mapName}</p>`
+    })
+})
